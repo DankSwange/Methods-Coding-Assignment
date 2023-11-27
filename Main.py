@@ -7,4 +7,5 @@ while (inventoryOption != 1):
   while (inventoryOption < 1 and inventoryOption > 3):
     inventoryOption = input("Please select a valid option from the menu above 1-3: ")
 
-  
+  if (inventoryOption == 2):
+    inven = Inventory(
