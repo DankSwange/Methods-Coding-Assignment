@@ -8,4 +8,9 @@ while (inventoryOption != 1):
     inventoryOption = input("Please select a valid option from the menu above 1-3: ")
 
   if (inventoryOption == 2):
-    inven = Inventory(
+    inven = Inventory("Design.db", "Inventory")
+    inven.viewInventory()
+
+  if (inventoryOption == 3):
+    inven = Inventory("Design.db", "Inventory")
+    inven.searchInventory()
