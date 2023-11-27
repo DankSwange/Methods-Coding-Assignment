@@ -28,10 +28,10 @@ class Inventory:
         cursor.close()
         connection.close()
 
-    def searchInventory(Search):
+    def searchInventory(search):
         cursor = connection.cursor()
         print()
-        cursor.exectute("SELECT * FROM tableName WHERE Title=Search")
+        cursor.exectute("SELECT * FROM tableName WHERE Title=search")
         result = cursor.fetchall()
         for x in result:
             print("ISBN:", x[0], "\tTitle:", x[1], "\tAuthor:", x[2], "\tGenre:", x[3], "\tPages:", x[4], "\tRelease Date:", x[5], "\tStock:", x[6])
