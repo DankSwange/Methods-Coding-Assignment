@@ -13,4 +13,5 @@ while (inventoryOption != 1):
 
   if (inventoryOption == 3):
     inven = Inventory("Design.db", "Inventory")
-    inven.searchInventory()
+    title = input("Enter the name of the book you would like to search for: ")
+    inven.searchInventory(title)
