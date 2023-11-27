@@ -1,14 +1,6 @@
 import sqlite3
 import sys
 
-try:
-    connection = sqlite3.connect("Inventory.db")
-    print("Successfull connection.")
-
-except:
-    print("Failed connection.")
-    sys.exit()
-
     
 class Inventory:
     def __init__(self):
@@ -17,11 +9,18 @@ class Inventory:
     def __init__(self, databaseName, tableName):
         self.databaseName = databaseName
         self.tableName = tableName
+        try:
+            connection = sqlite3.connect("databaseName")
+            print("Successful connection.")
+
+        except:
+            print("Failed connection.")
+            sys.exit()
     
     def viewInventory():
         cursor = connection.cursor()
         print()
-        cursor.execute("SELECT * FROM Inventory")
+        cursor.execute("SELECT * FROM tableName")
         result = cursor.fetchall()
         for x in result:
             print("ISBN:", x[0], "\tTitle:", x[1], "\tAuthor:", x[2], "\tGenre:", x[3], "\tPages:", x[4], "\tRelease Date:", x[5], "\tStock:", x[6])
@@ -32,7 +31,7 @@ class Inventory:
     def searchInventory(Search):
         cursor = connection.cursor()
         print()
-        cursor.exectute("SELECT * FROM Inventory WHERE Title=Search")
+        cursor.exectute("SELECT * FROM tableName WHERE Title=Search")
         result = cursor.fetchall()
         for x in result:
             print("ISBN:", x[0], "\tTitle:", x[1], "\tAuthor:", x[2], "\tGenre:", x[3], "\tPages:", x[4], "\tRelease Date:", x[5], "\tStock:", x[6])
@@ -43,7 +42,7 @@ class Inventory:
     def decreaseStock(decISBN):
         cursor = connection.cursor()
         print()
-        cursor.execute("UPDATE Inventory SET Stock WHERE ISBN=decISBN")    ##not complete
+        cursor.execute("UPDATE tableName SET Stock WHERE ISBN=decISBN")    ##not complete
         connection.commit()
         cursor.close()
         connection.close()
