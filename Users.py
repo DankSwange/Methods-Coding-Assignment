@@ -1,27 +1,43 @@
+import sqlite3
+import sys
+
+try:
+    connection = sqlite3.connect("Design.db")
+
+except:
+    print("Failed connection.")
+    sys.exit()
+
+cursor = connection.cursor()
+
 class Users:
     def __init__(self):
-        self.userID = None
-        self.password = None
-        self.firstName = None
-        self.lastName = None
-        self.address = None
-        self.state = None
-        self.zip = None
-        self.payment = None
+        self.userID = ""
+        self.password = ""
+        self.firstName = ""
+        self.lastName = ""
+        self.address = ""
+        self.state = ""
+        self.zip = ""
+        self.payment = ""
+        self.tableName = ""
+        self.databaseName = ""
         self.loggedIn = False
-        self.tableName = None
-        self.databaseName = None
 
     def  User(self, databaseName, tableName):
+        self.databaseName = design.db
+        self.tableName = User
 
     def login(self, userID, loggedIn):
         self.loggedIn = True
         
-    def logout(self, UserID):
-        self.UserID = None
-        self.loggedIn = False
+    def logout(self, loggedIn):
+        if self.loggedIn = True:
+            self.userID = ""
+            self.loggedIn = False
     
-    def viewAccountInformation(self, UserID):
+    def viewAccountInformation(self, databaseName, tableName):
+        
 
     def createAccount(self): 
         if self.loggedIn == True:
