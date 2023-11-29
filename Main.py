@@ -34,14 +34,9 @@ while (option > 0 and option < 4):
     if(use.loggedIn == True):
       mainMenu(use)
   else if(option == 2):
-    use.createNewAccount()
+    use.createAccount()
     mainMenu(use)
   else if (option == 3):
-    use.logout()
-  
-  else if(option == 2):
-    use.createAccount()
-  else if(option == 3):
     use.logout()
 
 inventoryOption = 0
