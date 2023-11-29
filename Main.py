@@ -35,6 +35,31 @@ def inventoryMenu(use):
         inven = Inventory("Design.db", "Inventory")
         title = input("Enter the name of the book you would like to search for: ")
         inven.searchInventory(title)
+    
+def cartMenu(use):
+    while (True):
+        inventory = Inventory("Design.db", "Inventory")
+        cart = Cart("Design.db", "Cart")
+        userChoice = 0
+
+        print("1. Go back\n2. View cart\n3. Add item to cart\n4. Remove item from cart\n5. Check out\n")
+
+        while (userChoice < 1 and userChoice > 5):
+            userChoice = input("What would you like to do? (Enter a choice 1-5): ")
+    
+        if (userChoice == 1):
+            break
+        elif(userChoice == 2):
+            cart.viewCart(userID, "Inventory")
+        elif(userChoice == 3):
+            inventory.viewInventory()
+            item = input("Enter item to add to cart: ")
+            cart.addToCart(userID, item)
+        elif(userChoice == 4):
+            ISBN = input("Enter the item to be removed: ")
+            cart.removeFromCart(userID, ISBN)
+        elif(userChoice == 5):
+            cart.checkOut(userID)
         
 
 print("Welcome to our Store, please choose an option to get started!")
