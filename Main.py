@@ -1,3 +1,49 @@
+use = User("Design.db", "User")
+
+def mainMenu(use):
+  print(f"Welcome, {use.firstName}/n/n")
+  print("Please choose an option")
+  print("1. Logout/n")
+  print("2. View Account Information/n")
+  print("3. Access Inventory Information/n")
+  print("4. Access Cart Information/n")
+  MMOption = input()
+  while (MMOption > 0 and MMOption < 5):
+    if (MMOption == 1):
+      use.logout()
+    else if (MMOption == 2):
+      use.viewAccountInformation()
+    else if (MMOption == 3):
+      inventoryMenu(use)
+    else if (MMOption == 4):
+      cartMenu(use)
+    
+
+print("Welcome to our Store, please choose an option to get started!")
+option = 0
+while (option > 0 and option < 4):
+  print("1. Login/n")
+  print("2. Create Account/n")
+  print("3. Logout/n")
+  option = input("Choose a number: ")
+  if(option == 1):
+    email = input("Enter your email: ")
+    print()
+    password = input("Enter your password: ")
+    use.login(email, password)
+    if(use.loggedIn == True):
+      mainMenu(use)
+  else if(option == 2):
+    use.createNewAccount()
+    mainMenu(use)
+  else if (option == 3):
+    use.logout()
+  
+  else if(option == 2):
+    use.createAccount()
+  else if(option == 3):
+    use.logout()
+
 inventoryOption = 0
 while (inventoryOption != 1):
   print("1. Go back\n")
