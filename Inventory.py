@@ -34,15 +34,20 @@ class Inventory:
         cursor.exectute("SELECT * FROM tableName WHERE Title=search") ## need to ask how to check if failure
         result = cursor.fetchall()
         for x in result:
-            print("ISBN:", x[0], "\tTitle:", x[1], "\tAuthor:", x[2], "\tGenre:", x[3], "\tPages:", x[4], "\tRelease Date:", x[5], "\tStock:", x[6])
-            print("\n\n")
+            if (x == 0):
+                print("Search failed: book is not in inventory.\n)
+            else:
+                print("ISBN:", x[0], "\tTitle:", x[1], "\tAuthor:", x[2], "\tGenre:", x[3], "\tPages:", x[4], "\tRelease Date:", x[5], "\tStock:", x[6])
+                print("\n\n")
         cursor.close()
         connection.close()
 
-    def decreaseStock(decISBN):
+    def decreaseStock(decISBN, quantityBought):
         cursor = connection.cursor()
         print()
-        cursor.execute("UPDATE tableName SET Stock WHERE ISBN=decISBN")    ## not complete
+        dec = cursor.exectute("SELECT Stock FROM tableName WHERE ISBN=decISBN")  ##dec is created to deincrement the stock
+        dec -= quantityBought
+        cursor.execute("UPDATE tableName SET Stock=dec WHERE ISBN=decISBN")
         connection.commit()
         cursor.close()
         connection.close()
