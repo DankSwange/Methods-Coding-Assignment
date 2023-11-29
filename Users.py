@@ -8,6 +8,8 @@ except:
     print("Failed connection.")
     sys.exit()
 
+print()
+
 cursor = connection.cursor()
 
 class Users:
@@ -26,9 +28,9 @@ class Users:
 
     def  User(self, databaseName, tableName):
         self.databaseName = design.db
-        self.tableName = User
+        self.tableName = ""
 
-    def login(self, userID, loggedIn):
+    def login(self, email, password, loggedIn):
         self.loggedIn = True
         
     def logout(self, loggedIn):
@@ -36,8 +38,16 @@ class Users:
             self.userID = ""
             self.loggedIn = False
     
-    def viewAccountInformation(self, databaseName, tableName):
-        
+    def viewAccountInformation(self, databaseName, tableName): 
+        cursor.execute(f"SELECT * FROM User WHERE UserID={userID}")
+
+        result = cursor.fetchall()
+
+        print("Your account info: \n")
+
+        for x in result:
+            print("Name:", x[1], "by", x[2])
+            print()
 
     def createAccount(self): 
         if self.loggedIn == True:
@@ -51,8 +61,12 @@ class Users:
             self.state = input("Enter your state: ")
             self.zip = input("Enter your zip: ")
             self.payment = input("Enter your payment type: ")
-            self.AccountInformation = {UserID, email, password, firstName, lastName, address, city, state, zip, payment}
+            self.AccountInformation = {email, password, firstName, lastName, address, city, state, zip, payment}
             self.loggedIn = True
+            cursor.execute("INSERT INTO User (Email, Password, firstName, lastName, Address, City, State, Zip, Payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)\
+            data = (f"{email}, {password}, "{firstName}", "{lastName}", "{lastName}", "{address}", "{state}", "{zip}". "{payment}")
+            cursor.execute(query, data)
+            connection.commit()
             print("Account creation successful.")
     
     def getLoggedin(self):
@@ -60,3 +74,6 @@ class Users:
 
     def getUserID(self):
         return self.UserID
+
+cursor.close()
+connection.close()
