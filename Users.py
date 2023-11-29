@@ -28,7 +28,7 @@ class Users:
 
     def  User(self, databaseName, tableName):
         self.databaseName = design.db
-        self.tableName = ""
+        self.tableName = User
 
     def login(self, email, password, loggedIn):
         self.loggedIn = True
@@ -37,6 +37,11 @@ class Users:
         if self.loggedIn = True:
             self.userID = ""
             self.loggedIn = False
+            return self.loggedIn
+
+        else:
+            print("You must be logged in to logout.")
+            return
     
     def viewAccountInformation(self, databaseName, tableName): 
         cursor.execute(f"SELECT * FROM User WHERE UserID={userID}")
@@ -46,7 +51,7 @@ class Users:
         print("Your account info: \n")
 
         for x in result:
-            print("Name:", x[1], "by", x[2])
+            print(f"Name: {x[3]} {x[4]} /nEmail: {x[1]} /nPassword: {x[2]} /nAddress: {x[5]} /nState: {x[6]} /nZip{x[7} /nPayment: x[8]")
             print()
 
     def createAccount(self): 
@@ -61,7 +66,6 @@ class Users:
             self.state = input("Enter your state: ")
             self.zip = input("Enter your zip: ")
             self.payment = input("Enter your payment type: ")
-            self.AccountInformation = {email, password, firstName, lastName, address, city, state, zip, payment}
             self.loggedIn = True
             cursor.execute("INSERT INTO User (Email, Password, firstName, lastName, Address, City, State, Zip, Payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)\
             data = (f"{email}, {password}, "{firstName}", "{lastName}", "{lastName}", "{address}", "{state}", "{zip}". "{payment}")
