@@ -1,7 +1,7 @@
 use = User("Design.db", "User")
 
 def mainMenu(use):
-  print(f"Welcome, {use.firstName}/n/n")
+  print("Welcome, {use.firstName}/n/n")
   print("Please choose an option")
   print("1. Logout/n")
   print("2. View Account Information/n")
@@ -39,20 +39,19 @@ while (option > 0 and option < 4):
   else if (option == 3):
     use.logout()
 
-inventoryOption = 0
-while (inventoryOption != 1):
-  print("1. Go back\n")
-  print("2. View Inventory\n")
-  print("3. Search Inventory\n")
-  inventoryOption = input("Please select a valid option from the menu above 1-3: ")
-  while (inventoryOption < 1 and inventoryOption > 3):
+def inventoryMenu(use):
+  inventoryOption = 0
+  while (inventoryOption != 1):
+    print("1. Go back\n")
+    print("2. View Inventory\n")
+    print("3. Search Inventory\n")
     inventoryOption = input("Please select a valid option from the menu above 1-3: ")
+    while (inventoryOption > 0 and inventoryOption < 4):
+      if (inventoryOption == 2):
+        inven = Inventory("Design.db", "Inventory")
+        inven.viewInventory()
 
-  if (inventoryOption == 2):
-    inven = Inventory("Design.db", "Inventory")
-    inven.viewInventory()
-
-  if (inventoryOption == 3):
-    inven = Inventory("Design.db", "Inventory")
-    title = input("Enter the name of the book you would like to search for: ")
-    inven.searchInventory(title)
+      if (inventoryOption == 3):
+        inven = Inventory("Design.db", "Inventory")
+        title = input("Enter the name of the book you would like to search for: ")
+        inven.searchInventory(title)
