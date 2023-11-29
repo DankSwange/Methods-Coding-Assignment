@@ -54,6 +54,8 @@ class Users:
             print(f"Name: {x[3]} {x[4]} /nEmail: {x[1]} /nPassword: {x[2]} /nAddress: {x[5]} /nState: {x[6]} /nZip{x[7} /nPayment: x[8]")
             print()
 
+        return
+
     def createAccount(self): 
         if self.loggedIn == True:
             print("You are already logged in, please logout to create an account.")
@@ -67,11 +69,12 @@ class Users:
             self.zip = input("Enter your zip: ")
             self.payment = input("Enter your payment type: ")
             self.loggedIn = True
-            cursor.execute("INSERT INTO User (Email, Password, firstName, lastName, Address, City, State, Zip, Payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)\
-            data = (f"{email}, {password}, "{firstName}", "{lastName}", "{lastName}", "{address}", "{state}", "{zip}". "{payment}")
+            query = "INSERT INTO User (Email, Password, firstName, lastName, Address, City, State, Zip, Payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            data = (f"{email}", f"{password}", f"{firstName}", f"{lastName}", f"{lastName}", f"{address}", f"{state}", f"{zip}". f"{payment}")
             cursor.execute(query, data)
             connection.commit()
             print("Account creation successful.")
+            return self.loggedIn
     
     def getLoggedin(self):
         return self.loggedIn
