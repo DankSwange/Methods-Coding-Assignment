@@ -15,11 +15,11 @@ def mainMenu(use):
   while (MMOption > 0 and MMOption < 5):
     if (MMOption == 1):
       use.logout()
-    else if (MMOption == 2):
+    elif (MMOption == 2):
       use.viewAccountInformation()
-    else if (MMOption == 3):
+    elif (MMOption == 3):
       inventoryMenu(use)
-    else if (MMOption == 4):
+    elif (MMOption == 4):
       cartMenu(use)
 
 def inventoryMenu(use):
@@ -80,9 +80,9 @@ while (option > 0 and option < 4):
     use.login(email, password)
     if(use.loggedIn == True):
       mainMenu(use)
-  else if(option == 2):
+  elif(option == 2):
     use.createAccount()
     mainMenu(use)
-  else if (option == 3):
+  elif(option == 3):
     use.logout()
 
