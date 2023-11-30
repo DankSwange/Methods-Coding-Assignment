@@ -1,3 +1,7 @@
+import User
+import Inventory
+import Cart
+
 use = User("Design.db", "User")
 
 def mainMenu(use):
