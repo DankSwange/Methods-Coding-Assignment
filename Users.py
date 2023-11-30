@@ -34,7 +34,7 @@ class Users:
         self.loggedIn = True
         
     def logout(self, loggedIn):
-        if self.loggedIn = True:
+        if self.loggedIn == True:
             self.userID = ""
             self.loggedIn = False
             return self.loggedIn
@@ -51,7 +51,7 @@ class Users:
         print("Your account info: \n")
 
         for x in result:
-            print(f"Name: {x[3]} {x[4]} /nEmail: {x[1]} /nPassword: {x[2]} /nAddress: {x[5]} /nState: {x[6]} /nZip{x[7} /nPayment: x[8]")
+            print(f"Name: {x[3]} {x[4]} /nEmail: {x[1]} /nPassword: {x[2]} /nAddress: {x[5]} /nState: {x[6]} /nZip{x[7]} /nPayment: x[8]")
             print()
 
         return
@@ -70,7 +70,7 @@ class Users:
             self.payment = input("Enter your payment type: ")
             self.loggedIn = True
             query = "INSERT INTO User (Email, Password, firstName, lastName, Address, City, State, Zip, Payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
-            data = (f"{email}", f"{password}", f"{firstName}", f"{lastName}", f"{lastName}", f"{address}", f"{state}", f"{zip}". f"{payment}")
+            data = (f"{email}", f"{password}", f"{firstName}", f"{lastName}", f"{lastName}", f"{address}", f"{state}", f"{zip}", f"{payment}")
             cursor.execute(query, data)
             connection.commit()
             print("Account creation successful.")
