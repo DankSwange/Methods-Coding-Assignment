@@ -1,8 +1,8 @@
-import User
+import Users
 import Inventory
 import Cart
 
-use = User("Design.db", "User")
+use = Users("Design.db", "User")
 
 def mainMenu(use):
   print("Welcome, {use.firstName}/n/n")
@@ -58,7 +58,7 @@ def cartMenu(use):
         elif(userChoice == 3):
             inventory.viewInventory()
             item = input("Enter item to add to cart: ")
-            cart.addToCart(user.getUserID, item)
+            cart.addToCart(use.getUserID, item)
         elif(userChoice == 4):
             ISBN = input("Enter the item to be removed: ")
             cart.removeFromCart(use.getUserID, ISBN)
@@ -84,5 +84,6 @@ while (option > 0 and option < 4):
     use.createAccount()
     mainMenu(use)
   elif(option == 3):
+    use.logout()
     use.logout()
 
