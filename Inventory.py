@@ -35,7 +35,7 @@ class Inventory:
         result = cursor.fetchall()
         for x in result:
             if (x == 0):
-                print("Search failed: book is not in inventory.\n)
+                print("Search failed: book is not in inventory.\n")
             else:
                 print("ISBN:", x[0], "\tTitle:", x[1], "\tAuthor:", x[2], "\tGenre:", x[3], "\tPages:", x[4], "\tRelease Date:", x[5], "\tStock:", x[6])
                 print("\n\n")
