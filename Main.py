@@ -50,16 +50,16 @@ def cartMenu(use):
         if (userChoice == 1):
             break
         elif(userChoice == 2):
-            cart.viewCart(userID, "Inventory")
+            cart.viewCart(use.getUserID, "Inventory")
         elif(userChoice == 3):
             inventory.viewInventory()
             item = input("Enter item to add to cart: ")
-            cart.addToCart(userID, item)
+            cart.addToCart(user.getUserID, item)
         elif(userChoice == 4):
             ISBN = input("Enter the item to be removed: ")
-            cart.removeFromCart(userID, ISBN)
+            cart.removeFromCart(use.getUserID, ISBN)
         elif(userChoice == 5):
-            cart.checkOut(userID)
+            cart.checkOut(use.getUserID)
         
 
 print("Welcome to our Store, please choose an option to get started!")
